@@ -17,14 +17,14 @@ export const init = () => {
           createdAt DATE NOT NULL
         )`,
         [],
-        () => {resolve()},  //promesa se cumple - éxito
+        () => { resolve()},  //promesa se cumple - éxito
         (_, err) => { reject(err) },  // promesa no se cumple - fracaso
       );
     });
   });
   
   return promise;
-};
+}
 
 export const insertUser = (
 image,
@@ -46,7 +46,7 @@ createdAt
       )
     })
   })
-};
+}
 
 export const fetchUsers = () => {
   return new Promise((resolve, reject) => {
@@ -59,7 +59,7 @@ export const fetchUsers = () => {
       )
     })
   })
-};
+}
 
 export const SelectUser = (UserEmail) => {
     return new Promise((resolve, reject) => {
@@ -72,7 +72,7 @@ export const SelectUser = (UserEmail) => {
         )
       })
     })
-  };
+  }
 
   export const updateUserPicture = (
     image,
@@ -88,5 +88,5 @@ export const SelectUser = (UserEmail) => {
           )
         })
       })
-    };
+    }
 

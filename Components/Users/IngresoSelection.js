@@ -39,9 +39,8 @@ const { action } = route.params;
   //dispatch
 const dispatch = useDispatch();
 //confirm user
-function handleSignUp(){
+const handleSignUp = ()=>{
   let newUser = {
-  id: null,
   image: null,
   name:inputName,
   lastname:inputLastName,

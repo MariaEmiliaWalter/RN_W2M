@@ -1,17 +1,25 @@
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, {useEffect, useState} from 'react';
 import { getProfileUser, updateUserPhoto } from '../../store/Actions/user.action';
 
 import { ESTILOS } from '../../Constants/Estilos';
 import ImageSelector from "../ImageSelector"
-import React from 'react';
 import { logOut } from '../../store/Actions/ingreso.action';
 import { useDispatch } from 'react-redux';
 
 export default function UserProfile() {
 const dispatch = useDispatch();
-const user = dispatch(getProfileUser());
-
 const [image, setImage] = useState("");
+
+const data = () =>{ 
+useEffect(() => {
+dispatch(getProfileUser());
+}, []);
+};
+
+const dataUser = data();
+console.log(dataUser);
+
 
 const handlePickImage = (image) => {
   setImage(image)
@@ -27,16 +35,16 @@ return (
         <ImageSelector onImage={handlePickImage}/>
 <FlatList
         style={{alignSelf:"center"}}
-        data={user}
+        data={data}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
            <View style={styles.cardContainer}>
-            <Text> {item.email} </Text>
-            <Text> {item.createdAt} </Text>
+            <Text> {data.item.email} </Text>
+            <Text> {data.item.createdAt} </Text>
             </View>
         )}
       />
-      <View>
+      <View style={{flex:1, justifyContent:"space-between", alignSelf:"center", flexDirection:"row"}}>
          <TouchableOpacity 
             onPress={handleSave}
       style={{...ESTILOS.button, marginTop:20 }}
