@@ -7,7 +7,7 @@ export const init = () => {
     db.transaction((tx) => {
       tx.executeSql(
         `CREATE TABLE IF NOT EXISTS users (
-          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          id INTEGER PRIMARY KEY NOT NULL,
           image TEXT,
           name TEXT NOT NULL,
           lastname TEXT NOT NULL,
