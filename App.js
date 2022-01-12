@@ -1,21 +1,33 @@
-import { StyleSheet, Text, View } from 'react-native';
+import AppInicio from "./AppInicio";
+import { Provider } from "react-redux";
+import React from "react";
+import { init } from "./db";
+import store from "./store/Index";
 
-import { StatusBar } from 'expo-status-bar';
+// import { useFonts } from "expo-font";
 
-export default function App() {
+init()
+  .then(() => console.log('Database initialized'))
+  .catch(err => {
+    console.log('Database failed to connect')
+    console.log(err.message)
+  });
+
+
+  // const [loaded] = useFonts({
+  // "roboto-regular": require("./assets/fonts/Roboto/Roboto-Regular.ttf"),  
+  // });
+  
+  export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>hola hola hola </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+    <Provider store={store}>
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  <AppInicio/>
+
+    </Provider>
+
+  );
+};
+
+
+
