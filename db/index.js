@@ -8,7 +8,7 @@ export const init = () => {
       tx.executeSql(
         `CREATE TABLE IF NOT EXISTS users (
           id INTEGER PRIMARY KEY NOT NULL,
-          image TEXT,
+          image TEXT NOT NULL,
           name TEXT NOT NULL,
           lastname TEXT NOT NULL,
           email TEXT NOT NULL,

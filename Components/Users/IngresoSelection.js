@@ -41,7 +41,7 @@ const dispatch = useDispatch();
 //confirm user
 const handleSignUp = ()=>{
   let newUser = {
-  image: null,
+  image: "notimageYet",
   name:inputName,
   lastname:inputLastName,
   email:inputEmail,

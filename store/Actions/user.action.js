@@ -92,7 +92,7 @@ return async dispatch =>{
 
 console.log(result);
 
-   dispatch({
+dispatch({
         type: ADD_USER,
         payload: {
         id: result.insertId,
